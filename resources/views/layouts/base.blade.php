@@ -22,7 +22,7 @@
     <meta name="author" content="Surfside Media">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <title>SurfsideMedia</title>
+    <title>@yield('title')</title>
 
     <link id="rtl-link" rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
     <link rel="stylesheet" href="assets/css/vendors/ion.rangeSlider.min.css">
@@ -200,7 +200,7 @@
                                                                 @csrf
                                                             </form>
                                                         </li>
-                                                    @else
+                                                        @else
                                                         <li>
                                                             <a href="{{ route('login') }}" class="d-block">Login</a>
                                                         </li>

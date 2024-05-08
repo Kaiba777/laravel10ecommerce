@@ -4,6 +4,8 @@
     <link id="color-link" rel="stylesheet" type="text/css" href="{{ asset('assets/css/demo2.css') }}">
 @endpush
 
+@section('title', 'Detail de l\'article')
+
 @section('content')
 <section class="breadcrumb-section section-b-space" style="padding-top:20px;padding-bottom:20px;">
     <ul class="circles">
@@ -60,7 +62,6 @@
                                                         class="img-fluid blur-up lazyload" alt="">
                                                 </div>
                                             @endforeach
-                                            
                                         @endif
                                         
                                     </div>

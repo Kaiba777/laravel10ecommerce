@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', 'Panier')
+
 @section('content')
 <section class="breadcrumb-section section-b-space" style="padding-top:20px;padding-bottom:20px;">
     <ul class="circles">
@@ -88,9 +90,7 @@
                                     <td>
                                         <div class="qty-box">
                                             <div class="input-group">
-                                                <input type="number" name="quantity"
-                                                    data-rowid="ba02b0dddb000b25445168300c65386d"
-                                                    class="form-control input-number" value="{{ $item->qty }}">
+                                                <input type="number" name="quantity" data-rowid="{{ $item->rowId }}" onchange="updateQuantity(this)" class="form-control input-number" value="{{ $item->qty }}">
                                             </div>
                                         </div>
                                     </td>
@@ -170,12 +170,28 @@
         @else
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <h2>Your cart is empty !</h2>
-                    <h5 class="mt-3">Add Items to it now.</h5>
-                    <a href="{{ route('shop.index') }}" class="btn btn-warning mt-5">Shop Now</a>
+                    <h2>Votre panier est vide !</h2>
+                    <a href="{{ route('shop.index') }}" class="btn btn-warning mt-5">Ajouter des articles</a>
                 </div>
             </div>
         @endif
     </div>
 </section>
+<form id="updateCartQty" action="{{ route('cart.update') }}" method="POST">
+    @csrf
+    @method('put')
+    <input type="hidden" id="rowId" name="rowId">
+    <input type="hidden" id="quantity " name="quantity">
+</form>
 @endsection
+
+@push('scripts')
+    <script>
+        function updateQuantity(qty)
+        {
+            $('#rowId').val($(qty).data('rowid'));
+            $('#quantity').val($(qty).val());
+            $('#updateCartQty').submit();
+        }
+    </script>
+@endpush

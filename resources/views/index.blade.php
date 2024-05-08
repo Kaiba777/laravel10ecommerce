@@ -1,5 +1,7 @@
 @extends('layouts.base')
 
+@section('title', 'SurfsideMedia')
+
 @section('content')
 <section class="pt-0 poster-section">
     <div class="poster-image slider-for custome-arrow classic-arrow">
